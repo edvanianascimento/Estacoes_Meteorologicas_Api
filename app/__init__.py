@@ -4,7 +4,6 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_marshmallow import Marshmallow
 
 
-
 app = Flask(__name__)
 app.config.from_object('config')
 
@@ -22,3 +21,9 @@ db.create_all()
 ###from app.controllers.produto_controller import ProdutoController
 ###app.register_blueprint(ProdutoController.produto_controller, url_prefix="/api/v1/")
 
+
+from app.models import estacoes
+db.create_all()
+
+from app.controllers.estacoes_controller import EstacoesController
+app.register_blueprint(EstacoesController.estacoes_controller, url_prefix='/api/v1/')
